@@ -103,13 +103,6 @@ public class AssemblyLine2{
             new Pair(prodMap.get("Circuit"), 3), new Pair(prodMap.get("Gold Cable"), 3),
             new Pair(prodMap.get("Processor"), 3), new Pair(prodMap.get("Refined Plutonium"), 4.2)}));
 
-
-
-        prodMap.put("Atomic Bomb", new AssemblyLineProduct("Atomic Bomb", 5, "Radioactive Crafter MK2", new Pair[]{
-            new Pair(prodMap.get("Nuclear Processor"), 1), new Pair(prodMap.get("Nuclear Core"),1), 
-            new Pair(prodMap.get("Ignition System"), 1), new Pair(prodMap.get("Nuclear Cell"), 1),
-            new Pair(prodMap.get("Uranium"), 15), new Pair(prodMap.get("Plutonium"), 15), 
-            new Pair(prodMap.get("Refined Plutonium"), 4.2)}));
         prodMap.put("Nuclear Core", new AssemblyLineProduct("Nuclear Core", 5, "Radioactive Crafter MK2", new Pair[]{
             new Pair(prodMap.get("Nuclear Cell"), 1), new Pair(prodMap.get("Uranium Cell"),1), 
             new Pair(prodMap.get("Plutonium Cell"), 1), new Pair(prodMap.get("Processor"), 10),
@@ -119,6 +112,11 @@ public class AssemblyLine2{
             new Pair(prodMap.get("Nuclear Circuit"), 1), new Pair(prodMap.get("Uranium Circuit"),1), 
             new Pair(prodMap.get("Plutonium Circuit"), 1), new Pair(prodMap.get("AI Processor"), 1),
             new Pair(prodMap.get("Processor"), 5), new Pair(prodMap.get("Diamond Plate"), 10), 
+            new Pair(prodMap.get("Refined Plutonium"), 4.2)}));
+        prodMap.put("Atomic Bomb", new AssemblyLineProduct("Atomic Bomb", 5, "Radioactive Crafter MK2", new Pair[]{
+            new Pair(prodMap.get("Nuclear Processor"), 1), new Pair(prodMap.get("Nuclear Core"),1), 
+            new Pair(prodMap.get("Ignition System"), 1), new Pair(prodMap.get("Nuclear Cell"), 1),
+            new Pair(prodMap.get("Uranium"), 15), new Pair(prodMap.get("Plutonium"), 15), 
             new Pair(prodMap.get("Refined Plutonium"), 4.2)}));
         prodMap.put("AI Robot Bomber", new AssemblyLineProduct("AI Robot Bomber", 5, "Radioactive Crafter MK2", new Pair[]{
             new Pair(prodMap.get("Atomic Bomb"), 1), new Pair(prodMap.get("AI Robot"),1), 

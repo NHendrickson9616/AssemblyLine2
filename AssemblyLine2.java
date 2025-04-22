@@ -127,6 +127,7 @@ public class AssemblyLine2{
 
     public static void main(String[] args) {
         AssemblyLine2.setStats();
+        System.out.println(prodMap.entrySet().size());
         for (Map.Entry<String, AssemblyLineProduct> entry : prodMap.entrySet()) {
             System.out.println(entry.getKey());
             System.out.println(entry.getValue());

@@ -11,11 +11,11 @@ public class AssemblyLineProduct {
     private String machine; 
     private Pair[] materials;
 
-    public AssemblyLineProduct(String n, double t, String m, Pair[] mat){
-        name = n;
-        time = t;
-        machine = m;
-        materials = mat;
+    public AssemblyLineProduct(String name, double time, String machine, Pair[] materials){
+        this.name = name;
+        this.time = time;
+        this.machine = machine;
+        this.materials = materials;
     }
 
     //Returns things
@@ -61,7 +61,7 @@ public class AssemblyLineProduct {
                 case 2 -> s += " uses " + materials[0] + " and " + materials[1] + " in " + time + " seconds.";
                 default -> {
                     s += " uses ";
-                    for(int i = 1; i < materials.length - 1; i++){
+                    for(int i = 0; i < materials.length - 1; i++){
                         s += materials[i] + ", ";
                     }
                     s += "and " + materials[materials.length-1] + " in " + time + " seconds.";
@@ -72,16 +72,21 @@ public class AssemblyLineProduct {
         return s;
     }
 
-    //recursive material searcher, I think I want to remake materials as tuples within an array
     public Pair[] getRawMats(){
-        Pair me = new Pair(this, 1);
+        Pair me = new Pair(this, 1.0);
         HashMap<AssemblyLineProduct, Double> rawMats = new HashMap<>();
         mapAccum(rawMats, collectRawMats(me));
+        
+        // Remove this product itself from raw materials if present
+        rawMats.remove(this);
+
+        // Convert map entries to Pair array
         Pair[] result = new Pair[rawMats.size()];
         int i = 0;
-        for(Map.Entry<AssemblyLineProduct, Double> entry : rawMats.entrySet()){
+        for (Map.Entry<AssemblyLineProduct, Double> entry : rawMats.entrySet()) {
             result[i++] = new Pair(entry.getKey(), entry.getValue());
         }
+
         return result;
     }
 
@@ -93,10 +98,11 @@ public class AssemblyLineProduct {
         if(current.materials == null || current.materials.length == 0){
             hereMats.put(current, product.quantity);
         } else {
+            hereMats.put(current, product.quantity);
             for(Pair p : current.materials){
                 // Recursively collect sub-materials, adjusting for quantity needed
                 HashMap<AssemblyLineProduct, Double> subMats = collectRawMats(
-                    new Pair(p.material, p.quantity * product.quantity));
+                    new Pair(p.material, Math.round(p.quantity * product.quantity*100.)/100.));
                 
                 // Merge results
                 mapAccum(hereMats, subMats);

@@ -2,11 +2,11 @@ package AssemblyLine2;
 
 public class Pair{
     public AssemblyLineProduct material;
-    public double quantity;
+    public Double quantity;
 
-    public Pair(AssemblyLineProduct m, double q){
-        material = m;
-        quantity = q;
+    public Pair(AssemblyLineProduct material, Double quantity){
+        this.material = material;
+        this.quantity = quantity;
     }
 
     @Override
